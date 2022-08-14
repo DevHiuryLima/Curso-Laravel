@@ -13,10 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+use \App\Http\Controllers\EventController;
 
-Route::get('/produtos', function () {
-    return view('products');
-});
+Route::get('/', [EventController::class, 'index'])->name('home');
+Route::get('/events/create', [EventController::class, 'redirectToEventCreateForm'])->name('redirect.event.store');
+Route::post('/events/create', [EventController::class, 'store'])->name('event.store');

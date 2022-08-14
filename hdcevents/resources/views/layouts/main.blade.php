@@ -15,10 +15,45 @@
     <script src="/js/script.js" ></script>
 </head>
 <body>
-    @yield('content')
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="collapse navbar-collapse" id="navbar">
+                <a href="{{ route('home') }}" class="navbar-brand">
+                    <img src="{{ asset('/img/hdcevents_logo.svg') }}" id="img-logo" alt="HDC Events">
+                </a>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="{{ route('home') }}" class="nav-link">Eventos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('redirect.event.store') }}" class="nav-link">Criar Eventos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/" class="nav-link">Entrar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/" class="nav-link">Cadastrar</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="container-fluid">
+            <div class="row">
+                @if(session('message'))
+                    <p class="message"><ion-icon name="checkmark-circle-outline"></ion-icon>  {{ session('message') }}</p>
+                @endif
+                @yield('content')
+            </div>
+        </div>
+    </main>
 
     <footer>
         <p>HDC Events &copy; {{ date('Y', time()) }}</p>
     </footer>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
