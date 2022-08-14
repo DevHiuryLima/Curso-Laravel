@@ -154,10 +154,7 @@ header {
     border-radius: 10px;
 }
 
-#info-container h1 {
-    font-size: 36px;
-    font-weight: 900;
-}
+#info-container h1 { font-size: 36px; font-weight: 900; }
 
 #info-container p {
     margin: 0;
@@ -177,9 +174,11 @@ header {
     margin-right: 5px;
 }
 
-#info-container #event-submit {
-    margin: 20px 0;
-}
+#info-container #event-submit { margin: 20px 0; }
+
+#items-list { list-style: none; padding-left: 0; }
+
+#items-list li { display: flex; }
 
 
 

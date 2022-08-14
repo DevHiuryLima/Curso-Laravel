@@ -24,7 +24,7 @@ class EventController extends Controller
         $event->city = $request->city;
         $event->private = $request->private;
         $event->description = $request->description;
-//        $event->items = $request->items;
+        $event->items = $request->items;
         // $user = auth()->user();
         // $event->user_id = $user->id;
 
@@ -43,7 +43,6 @@ class EventController extends Controller
         }
 
         $event->save();
-
 
         return redirect('/')->with('message', 'Evento criado com sucesso!');
     }
