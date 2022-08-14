@@ -18,3 +18,4 @@ use \App\Http\Controllers\EventController;
 Route::get('/', [EventController::class, 'index'])->name('home');
 Route::get('/events/create', [EventController::class, 'redirectToEventCreateForm'])->name('redirect.event.store');
 Route::post('/events/create', [EventController::class, 'store'])->name('event.store');
+Route::get('/events/{id}', [EventController::class, 'show'])->name('event.show');

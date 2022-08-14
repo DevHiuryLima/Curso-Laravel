@@ -22,7 +22,7 @@
                     <h5 class="card-title">{{ $event->title }}</h5>
                     <p class="card-participants">0 Participantes</p>
                     {{-- <p class="card-participants"> {{ count($event->users) }} Participantes</p> --}}
-                    <a href="#" class="btn btn-primary">Saber mais</a>
+                    <a href="{{ route('event.show', ['id' => $event->id]) }}" class="btn btn-primary">Saber mais</a>
                 </div>
             </div>
         @endforeach
