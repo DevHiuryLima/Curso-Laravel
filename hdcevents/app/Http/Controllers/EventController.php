@@ -8,8 +8,17 @@ use Illuminate\Http\Request;
 class EventController extends Controller
 {
     public function index() {
-        $events = Event::all();
-        return view('home', ['events' => $events]);
+        $search = request('search');
+
+        if($search) { // Caso usuário buscou algum valor essa variável estará preenchida. E entra no if.
+            $events = Event::where([
+                ['title', 'like', '%'.$search.'%']
+            ])->get();
+        } else {
+            $events = Event::all();
+        }
+
+        return view('home',['events' => $events, 'search' => $search]);
     }
 
     public function redirectToEventCreateForm() {
@@ -20,7 +29,7 @@ class EventController extends Controller
         $event = new Event;
 
         $event->title = $request->title;
-//        $event->date = $request->date;
+        $event->date = $request->date;
         $event->city = $request->city;
         $event->private = $request->private;
         $event->description = $request->description;
