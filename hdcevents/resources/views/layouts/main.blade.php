@@ -30,10 +30,10 @@
                     </li>
                     @auth
                         <li class="nav-item">
-                            <a href="/dashboard" class="nav-link">Meus eventos</a>
+                            <a href="{{ route('event.dashboard') }}" class="nav-link">Meus eventos</a>
                         </li>
                         <li class="nav-item">
-                            <form action="/logout" method="POST">
+                            <form action="{{ route('logout') }}" method="POST">
                                 @csrf
                                 <a
                                     href="{{ route('logout') }}"
@@ -48,10 +48,10 @@
 
                     @guest
                     <li class="nav-item">
-                        <a href="/login" class="nav-link">Entrar</a>
+                        <a href="{{ route('login') }}" class="nav-link">Entrar</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/register" class="nav-link">Cadastrar</a>
+                        <a href="{{ route('register') }}" class="nav-link">Cadastrar</a>
                     </li>
                     @endguest
                 </ul>
