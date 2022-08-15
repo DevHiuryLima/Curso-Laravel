@@ -26,3 +26,4 @@ Route::put('/events/update/{id}', [EventController::class, 'update'])->name('eve
 Route::get('/dashboard', [EventController::class, 'dashboard'])->name('event.dashboard')->middleware('auth');
 
 Route::post('/events/join/{id}', [EventController::class, 'joinEvent'])->name('event.join')->middleware('auth');
+Route::delete('/events/leave/{id}', [EventController::class, 'leaveEvent'])->name('event.leave')->middleware('auth');

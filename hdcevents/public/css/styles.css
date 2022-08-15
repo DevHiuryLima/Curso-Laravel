@@ -40,7 +40,7 @@ header {
     padding: 10px;
 }
 
-#info-container .already-joined-message {
+#info-container .already-joined-msg {
     margin: 15px 0;
     color: #004085;
     background-color: #CCE5FF;
