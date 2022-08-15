@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\EventController;
 
 Route::get('/', [EventController::class, 'index'])->name('home');
-Route::get('/events/create', [EventController::class, 'redirectToEventCreateForm'])->name('redirect.event.store');
+Route::get('/events/create', [EventController::class, 'redirectToEventCreateForm'])->name('redirect.event.store')->middleware('auth');
 Route::post('/events/create', [EventController::class, 'store'])->name('event.store');
 Route::get('/events/{id}', [EventController::class, 'show'])->name('event.show');
 

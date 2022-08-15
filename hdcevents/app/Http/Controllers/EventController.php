@@ -34,8 +34,7 @@ class EventController extends Controller
         $event->private = $request->private;
         $event->description = $request->description;
         $event->items = $request->items;
-        // $user = auth()->user();
-        // $event->user_id = $user->id;
+
 
         // Image Upload
         if( $request->hasFile('image') && $request->file('image')->isValid() ) {
@@ -50,6 +49,9 @@ class EventController extends Controller
 
             $event->image = $imageName;
         }
+
+         $user = auth()->user();
+         $event->user_id = $user->id;
 
         $event->save();
 
