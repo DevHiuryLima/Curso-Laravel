@@ -24,3 +24,5 @@ Route::get('/events/update/{id}', [EventController::class, 'redirectToEventUpdat
 Route::put('/events/update/{id}', [EventController::class, 'update'])->name('event.update')->middleware('auth');
 
 Route::get('/dashboard', [EventController::class, 'dashboard'])->name('event.dashboard')->middleware('auth');
+
+Route::post('/events/join/{id}', [EventController::class, 'joinEvent'])->name('event.join')->middleware('auth');
