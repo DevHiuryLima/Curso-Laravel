@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title')</title>
 
+    <link rel="shortcut icon" href="{{ asset('/img/hdcevents_logo.svg') }}" sizes="200x200" type="image/svg" />
+
     <!-- Fonte do Google -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
 

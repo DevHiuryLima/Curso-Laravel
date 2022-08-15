@@ -59,8 +59,7 @@ class EventController extends Controller
         return redirect('/')->with('message', 'Evento criado com sucesso!');
     }
 
-    public function show($id)
-    {
+    public function show($id) {
         $event = Event::findOrFail($id);
 
         $eventOwner = User::where('id', $event->user_id)->first()->toArray();
@@ -69,33 +68,36 @@ class EventController extends Controller
     }
 
     public function dashboard() {
-
         $user = auth()->user();
 
         $events = $user->events;
 
-        return view('events.dashboard', ['events' => $events]);
+        $eventsAsParticipant = $user->eventsAsParticipant;
 
+        return view('events.dashboard',
+            ['events' => $events, 'eventsasparticipant' => $eventsAsParticipant]
+        );
     }
 
     public function destroy($id) {
-
         Event::findOrFail($id)->delete();
 
         return redirect('/dashboard')->with('msg', 'Evento excluído com sucesso!');
-
     }
 
     public function redirectToEventUpdateForm($id) {
+        $user = auth()->user();
 
         $event = Event::findOrFail($id);
 
-        return view('events.update', ['event' => $event]);
+        if($user->id != $event->user_id) {
+            return redirect('/dashboard');
+        }
 
+        return view('events.edit', ['event' => $event]);
     }
 
     public function update(Request $request) {
-
         $data = $request->all();
 
         // Image Upload
@@ -116,11 +118,9 @@ class EventController extends Controller
         Event::findOrFail($request->id)->update($data);
 
         return redirect('/dashboard')->with('msg', 'Evento editado com sucesso!');
-
     }
 
     public function joinEvent($id) {
-
         $user = auth()->user();
 
         $user->eventsAsParticipant()->attach($id);
@@ -128,6 +128,5 @@ class EventController extends Controller
         $event = Event::findOrFail($id);
 
         return redirect('/dashboard')->with('msg', 'Sua presença está confirmada no evento ' . $event->title);
-
     }
 }
