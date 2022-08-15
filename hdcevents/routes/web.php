@@ -19,5 +19,6 @@ Route::get('/', [EventController::class, 'index'])->name('home');
 Route::get('/events/create', [EventController::class, 'redirectToEventCreateForm'])->name('redirect.event.store')->middleware('auth');
 Route::post('/events/create', [EventController::class, 'store'])->name('event.store');
 Route::get('/events/{id}', [EventController::class, 'show'])->name('event.show');
+Route::delete('events/{id}', [EventController::class, 'destroy'])->name('event.destroy');
 
 Route::get('/dashboard', [EventController::class, 'dashboard'])->name('event.dashboard')->middleware('auth');
